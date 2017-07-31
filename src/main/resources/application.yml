@@ -1,0 +1,53 @@
+server:
+  address: 0.0.0.0
+  port: 8282
+  contextPath: /api/v1
+spring:
+  profiles.active: develop
+---
+spring:
+  profiles: develop
+  devtools:
+    livereload:
+      enabled: true
+  jpa:
+    database: MYSQL
+    generate-ddl: false
+  datasource:
+    url: "jdbc:mysql://192.168.224.6:3306/servermonv1"
+    username: smonapiapp
+    password: Bgtyhn789!@#
+    driverClassName: com.mysql.jdbc.Driver
+    defaultSchema: "servermonv1"
+    hibernate:
+      hbm2ddl.auto: validate
+      hbm2ddl.method: update
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQLDialect
+    hikari:
+      maxPoolSize: 10
+
+---
+spring:
+  profiles: quality
+  jpa:
+    database: sqlserver
+    generate-ddl: false
+  datasource:
+    url: "jdbc:sqlserver://127.0.0.1:1433;databaseName=CompanyService;integratedSecurity=false;"
+    username: fake_qc_user
+    password: password789!
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+---
+spring:
+  profiles: production
+  jpa:
+    database: sqlserver
+    generate-ddl: false
+  datasource:
+    url: "jdbc:sqlserver://192.168.31.212:1433;databaseName=CompanyService;integratedSecurity=false;"
+    username: fake_prod_usr
+    password: password789
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver

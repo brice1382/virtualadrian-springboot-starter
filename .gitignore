@@ -1,0 +1,8 @@
+target/
+idea/
+bower_components/
+node_modules/
+.idea/
+.iml
+workspace.xml
+.DS_Store
