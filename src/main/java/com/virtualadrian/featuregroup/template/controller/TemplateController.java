@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * The type Stats controller.
  */
-@RestController("templateController")
+@RestController
 @RequestMapping("/template")
 public class TemplateController {
 

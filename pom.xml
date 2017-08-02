@@ -35,6 +35,16 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+		<!-- swagger springfox maven -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+
         <!-- Spring Boot Configuration Processor  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

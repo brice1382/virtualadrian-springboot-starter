@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Import;
 /**
  * The type Application.
  */
-@Import(ServerMonitorRepositoryConfiguration.class)
+@Import({ServerMonitorRepositoryConfiguration.class, SwaggerConfig.class})
 @SpringBootApplication(scanBasePackages={"com.virtualadrian"})
 public class Application {
 
