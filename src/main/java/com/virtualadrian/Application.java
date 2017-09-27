@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.virtualadrian.config.ServerMonitorRepositoryConfiguration;
 import org.springframework.context.annotation.Import;
+import com.virtualadrian.config.SwaggerConfig;
 
 /**
  * The type Application.
