@@ -10,21 +10,91 @@
         <version>1.4.3.RELEASE</version>
     </parent>
 
+	<!-- PACKAGE OUTPUT -->
+	<packaging>jar</packaging>
+
     <!-- MODULE INFORMATION -->
     <groupId>com.virtualadrian</groupId>
     <artifactId>com-virtualadrian-starter</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- PACKAGE OUTPUT -->
-    <packaging>war</packaging>
 
     <!-- APPLICATION SPECIFIC -->
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <java.spring.boot.version>1.5.2.RELEASE</java.spring.boot.version>
         <start-class>com.virtualadrian.Application</start-class>
     </properties>
+
+
+	<profiles>
+		<profile>
+			<!-- :::::   OPENSHIFT BUILD PROFILE  :::::  -->
+			<id>openshift</id>
+
+			<!-- openshift build: not active -->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<!-- output a war -->
+			<properties>
+				<packaging>war</packaging>
+			</properties>
+
+			<!-- include spring-release -->
+			<repositories>
+				<repository>
+					<id>spring-releases</id>
+					<url>https://repo.spring.io/libs-release</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>spring-releases</id>
+					<url>https://repo.spring.io/libs-release</url>
+				</pluginRepository>
+			</pluginRepositories>
+
+			<!-- exclude tomcat -->
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<exclusions>
+						<exclusion>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-tomcat</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+				<dependency>
+					<groupId>javax.servlet</groupId>
+					<artifactId>javax.servlet-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+
+			<!-- build plugin for openshift-->
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.3</version>
+						<configuration>
+							<failOnMissingWebXml>false</failOnMissingWebXml>
+							<outputDirectory>target</outputDirectory>
+							<warName>ROOT</warName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
+	</profiles>
+
 
     <!-- APPLICATION DEPENDENCIES -->
     <dependencies>
@@ -33,17 +103,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
         </dependency>
 
 		<!-- swagger springfox maven -->
@@ -88,7 +147,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
         </dependency>
-
 
         <!-- H2 native dependency -->
         <dependency>
@@ -149,32 +207,6 @@
                 </executions>
             </plugin>
 
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <outputDirectory>target</outputDirectory>
-                    <warName>ROOT</warName>
-                </configuration>
-            </plugin>
-
-
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-releases</id>
-            <url>https://repo.spring.io/libs-release</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-releases</id>
-            <url>https://repo.spring.io/libs-release</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
