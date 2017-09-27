@@ -78,12 +78,13 @@
             <artifactId>spring-data-jpa</artifactId>
         </dependency>
 
-        <!-- MYSQL native dependency -->
-		<dependency>
-    		<groupId>mysql</groupId>
-    		<artifactId>mysql-connector-java</artifactId>
-    		<version>5.1.36</version>
-		</dependency>
+
+        <!-- H2 native dependency -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
         <!-- ModelMapper translate Entity Models to View Models etc -->
         <dependency>

@@ -1,16 +1,10 @@
 package com.virtualadrian.featuregroup.template.entity;
 
-
-
 import com.virtualadrian.base.BaseEntity;
 
 import javax.persistence.*;
 import java.util.Date;
 
-
-/**
- * The type template.
- */
 @Entity
 @Table(name="template")
 public class TemplateEntity extends BaseEntity {

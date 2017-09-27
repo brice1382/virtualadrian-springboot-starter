@@ -2,9 +2,6 @@ package com.virtualadrian.featuregroup.template.model;
 
 import java.util.Date;
 
-/**
- * The type Template repository.
- */
 public class TemplateModel {
 
 

@@ -102,10 +102,6 @@ public class ServerMonitorRepositoryConfiguration  {
         return hibernateJpaVendorAdapter;
     }
 
-    /**
-     *
-     * Here you can specify any provider specific properties.
-     */
     private Properties jpaProperties() {
         Properties properties = new Properties();
 
@@ -122,12 +118,6 @@ public class ServerMonitorRepositoryConfiguration  {
         return properties;
     }
 
-    /**
-     * Transaction manager platform transaction manager.
-     *
-     * @param emf the emf
-     * @return the platform transaction manager
-     */
     @Bean(name = "transactionManager")
     @Autowired
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
