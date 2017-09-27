@@ -10,8 +10,7 @@
         <version>1.4.3.RELEASE</version>
     </parent>
 
-	<!-- PACKAGE OUTPUT -->
-	<packaging>jar</packaging>
+
 
     <!-- MODULE INFORMATION -->
     <groupId>com.virtualadrian</groupId>
@@ -25,6 +24,8 @@
         <java.version>1.8</java.version>
         <java.spring.boot.version>1.5.2.RELEASE</java.spring.boot.version>
         <start-class>com.virtualadrian.Application</start-class>
+		<!-- PACKAGE OUTPUT -->
+		<packaging>jar</packaging>
     </properties>
 
 
