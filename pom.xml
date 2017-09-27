@@ -25,7 +25,7 @@
         <java.spring.boot.version>1.5.2.RELEASE</java.spring.boot.version>
         <start-class>com.virtualadrian.Application</start-class>
 		<!-- PACKAGE OUTPUT -->
-		<packaging>jar</packaging>
+		<packaging>war</packaging>
     </properties>
 
 
