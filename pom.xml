@@ -10,38 +10,37 @@
         <version>1.4.3.RELEASE</version>
     </parent>
 
+	<!-- MODULE INFORMATION -->
+	<groupId>com.virtualadrian</groupId>
+	<artifactId>com-virtualadrian-starter</artifactId>
+	<version>1.0-SNAPSHOT</version>
 
 
-    <!-- MODULE INFORMATION -->
-    <groupId>com.virtualadrian</groupId>
-    <artifactId>com-virtualadrian-starter</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
-
-    <!-- APPLICATION SPECIFIC -->
-    <properties>
+	<!-- APPLICATION SPECIFIC -->
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <java.spring.boot.version>1.5.2.RELEASE</java.spring.boot.version>
-        <start-class>com.virtualadrian.Application</start-class>
-		<!-- PACKAGE OUTPUT -->
-		<packaging>jar</packaging>
-    </properties>
+		<java.version>1.8</java.version>
+		<java.spring.boot.version>1.5.2.RELEASE</java.spring.boot.version>
+		<start-class>com.virtualadrian.Application</start-class>
+		<packaging.type>jar</packaging.type>
+	</properties>
 
+	<!-- PACKAGE OUTPUT -->
+	<packaging>${packaging.type}</packaging>
 
 	<profiles>
 		<profile>
 			<!-- :::::   OPENSHIFT BUILD PROFILE  :::::  -->
 			<id>openshift</id>
 
-			<!-- openshift build: not active -->
-			<!--<activation>-->
-				<!--<activeByDefault>false</activeByDefault>-->
-			<!--</activation>-->
+			<!--openshift build: not active-->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
 
 			<!-- output a war -->
 			<properties>
-				<packaging>war</packaging>
+				<packaging.type>war</packaging.type>
 			</properties>
 
 			<!-- include spring-release -->
@@ -93,6 +92,59 @@
 				</plugins>
 			</build>
 
+		</profile>
+		<profile>
+			<id>wars2i</id>
+
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<exclusions>
+						<exclusion>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-tomcat</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+				<dependency>
+					<groupId>javax.servlet</groupId>
+					<artifactId>javax.servlet-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.3</version>
+						<configuration>
+							<failOnMissingWebXml>false</failOnMissingWebXml>
+							<outputDirectory>target</outputDirectory>
+							<warName>ROOT</warName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+
+			<repositories>
+				<repository>
+					<id>spring-releases</id>
+					<url>https://repo.spring.io/libs-release</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>spring-releases</id>
+					<url>https://repo.spring.io/libs-release</url>
+				</pluginRepository>
+			</pluginRepositories>
 		</profile>
 	</profiles>
 
