@@ -1,3 +1,3 @@
 # virtualadrian-springboot-starter simple
 
-Proper Spring Boot REST API implementation.
+WIP: Spring Boot REST API implementation, more to come, the ReadMe needs some .
