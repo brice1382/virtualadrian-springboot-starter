@@ -5,9 +5,16 @@ server:
 ---
 spring:
   profiles: default
+  devtools:
+    livereload:
+      enabled: true
   jpa:
     database: H2
     generate-ddl: true
+  freemarker:
+    suffix: .ftl
+  aop:
+    proxy-target-class: true
   datasource:
     url: "jdbc:h2:mem:default"
     username: sa
@@ -31,6 +38,10 @@ spring:
   jpa:
     database: MYSQL
     generate-ddl: false
+  freemarker:
+    suffix: .ftl
+  aop:
+    proxy-target-class: true
   datasource:
     url: "jdbc:mysql://127.0.0.1:3306/servermonv1"
     username: smonapiapp
@@ -52,6 +63,8 @@ spring:
   jpa:
     database: sqlserver
     generate-ddl: false
+  freemarker:
+    suffix: .ftl
   datasource:
     url: "jdbc:sqlserver://127.0.0.1:1433;databaseName=CompanyService;integratedSecurity=false;"
     username: fake_qc_user
@@ -64,8 +77,20 @@ spring:
   jpa:
     database: sqlserver
     generate-ddl: false
+  freemarker:
+    suffix: .ftl
   datasource:
     url: "jdbc:sqlserver://192.168.31.212:1433;databaseName=CompanyService;integratedSecurity=false;"
     username: fake_prod_usr
     password: password789
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+---
+# JWT Auth
+auth:
+  secret: some-random-secret
+  expires: 604800
+  header: Authorization
+
+security:
+  basic:
+    enabled: false

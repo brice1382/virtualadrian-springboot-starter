@@ -16,4 +16,7 @@ public class BaseController {
     protected <T> ResponseEntity<T> Ok(T value){
         return new ResponseEntity<>(value, HttpStatus.OK);
     }
+
+    protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+    
 }
