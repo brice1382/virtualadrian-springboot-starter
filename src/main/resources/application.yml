@@ -4,17 +4,15 @@ server:
   contextPath: /api/v1
 ---
 spring:
-  profiles: default
+  profiles: develop
+  banner:
+    location: ./banner.txt
   devtools:
     livereload:
       enabled: true
   jpa:
     database: H2
     generate-ddl: true
-  freemarker:
-    suffix: .ftl
-  aop:
-    proxy-target-class: true
   datasource:
     url: "jdbc:h2:mem:default"
     username: sa
@@ -31,21 +29,17 @@ spring:
       maxPoolSize: 10
 ---
 spring:
-  profiles: develop
+  profiles: default
   devtools:
     livereload:
       enabled: true
   jpa:
     database: MYSQL
     generate-ddl: false
-  freemarker:
-    suffix: .ftl
-  aop:
-    proxy-target-class: true
   datasource:
-    url: "jdbc:mysql://127.0.0.1:3306/servermonv1"
+    url: "jdbc:mysql://192.168.224.6:3306/servermonv1"
     username: smonapiapp
-    password: blahblah
+    password: Bblahblah123!
     driverClassName: com.mysql.jdbc.Driver
     defaultSchema: "servermonv1"
     hibernate:
@@ -94,3 +88,4 @@ auth:
 security:
   basic:
     enabled: false
+

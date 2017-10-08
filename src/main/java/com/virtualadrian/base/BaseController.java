@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+
+
 public class BaseController {
     public static final Logger logger = LoggerFactory.getLogger(TemplateController.class);
 
@@ -17,6 +19,5 @@ public class BaseController {
         return new ResponseEntity<>(value, HttpStatus.OK);
     }
 
-    protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
-    
+    protected final Logger LOG = LoggerFactory.getLogger(this.getClass());    
 }

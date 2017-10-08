@@ -1,13 +1,13 @@
-package com.virtualadrian.featuregroup.secure.account.controller;
+package com.virtualadrian.featuregroup.account.controller;
 
 import com.virtualadrian.base.BaseController;
-import com.virtualadrian.featuregroup.secure.account.model.AccountModel;
-import com.virtualadrian.featuregroup.secure.account.service.AccountService;
+import com.virtualadrian.featuregroup.account.model.AccountModel;
+import com.virtualadrian.featuregroup.account.service.AccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/secure/account")
+@RequestMapping("/account")
 public class AccountController extends BaseController {
 
     private AccountService accountService;

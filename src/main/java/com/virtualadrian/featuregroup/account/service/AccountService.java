@@ -1,8 +1,8 @@
-package com.virtualadrian.featuregroup.secure.account.service;
+package com.virtualadrian.featuregroup.account.service;
 
 import com.virtualadrian.base.BaseCrudService;
-import com.virtualadrian.featuregroup.secure.account.entity.AccountEntity;
-import com.virtualadrian.featuregroup.secure.account.model.AccountModel;
+import com.virtualadrian.featuregroup.account.entity.AccountEntity;
+import com.virtualadrian.featuregroup.account.model.AccountModel;
 import org.springframework.stereotype.Service;
 
 @Service

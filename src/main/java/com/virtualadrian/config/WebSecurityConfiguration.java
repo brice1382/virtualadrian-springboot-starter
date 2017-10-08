@@ -61,9 +61,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.{png,jpg,jpeg,svg.ico}",
                         "/**/*.css",
-                        "/**/*.js"
+                        "/**/*.js",
+                        "/webjars/**",
+                        "/api/v1/swagger-resources/configuration/ui"
                 ).permitAll()
-                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/auth/**", "/api/v1/swagger-resources/configuration/ui").permitAll()
                 .anyRequest().authenticated();
 
         httpSecurity
