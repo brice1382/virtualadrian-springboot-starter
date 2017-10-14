@@ -1,34 +1,41 @@
-// package com.virtualadrian.config;
+ package com.virtualadrian.config;
 
 
-// import org.apache.commons.lang3.time.StopWatch;
-// import org.aspectj.lang.ProceedingJoinPoint;
-// import org.aspectj.lang.annotation.Around;
-// import org.aspectj.lang.annotation.Aspect;
+ import org.apache.commons.lang3.time.StopWatch;
+ import org.aspectj.lang.ProceedingJoinPoint;
+ import org.aspectj.lang.annotation.AfterThrowing;
+ import org.aspectj.lang.annotation.Around;
+ import org.aspectj.lang.annotation.Aspect;
 
-// import org.springframework.stereotype.Component;
+ import org.springframework.stereotype.Component;
 
-// @Aspect
-// @Component
-// public class AopServiceMonitor {
+ @Aspect
+ @Component
+ public class AopServiceMonitor {
 
-//     private static final String LOG_MESSAGE_FORMAT = "%s.%s execution time: %dms";
+     private static final String LOG_MESSAGE_FORMAT = "%s.%s execution time: %dms";
 
-//     @Around(("execution(* com.virtualadrian..*Service.*(..))"))
-//     public Object logTimeMethod(ProceedingJoinPoint joinPoint) throws Throwable {
-//         StopWatch stopWatch = new StopWatch();
-//         stopWatch.start();
 
-//         Object retVal = joinPoint.proceed();
+     @AfterThrowing (pointcut = "execution(* com.virtualadrian..*.*(..))", throwing = "ex")
+     public void afterThrow(Exception ex) throws Throwable {
+         System.out.println("****LoggingAspect.logAfterThrowingAllMethods() " + ex);
+     }
 
-//         stopWatch.stop();
+     @Around(("execution(* com.virtualadrian..*Service.*(..))"))
+     public Object logTimeMethod(ProceedingJoinPoint joinPoint) throws Throwable {
+         StopWatch stopWatch = new StopWatch();
+         stopWatch.start();
 
-//         logExecutionTime(joinPoint, stopWatch);
-//         return retVal;
-//     }
+         Object retVal = joinPoint.proceed();
 
-//     private void logExecutionTime(ProceedingJoinPoint joinPoint, StopWatch stopWatch) {
-//         String logMessage = String.format(LOG_MESSAGE_FORMAT, joinPoint.getTarget().getClass().getName(), joinPoint.getSignature().getName(), stopWatch.getTime());
-//         System.out.println(logMessage);
-//     }
-// }
+         stopWatch.stop();
+
+         logExecutionTime(joinPoint, stopWatch);
+         return retVal;
+     }
+
+     private void logExecutionTime(ProceedingJoinPoint joinPoint, StopWatch stopWatch) {
+         String logMessage = String.format(LOG_MESSAGE_FORMAT, joinPoint.getTarget().getClass().getName(), joinPoint.getSignature().getName(), stopWatch.getTime());
+         System.out.println(logMessage);
+     }
+ }

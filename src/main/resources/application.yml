@@ -4,6 +4,8 @@ server:
   contextPath: /api/v1
 ---
 spring:
+  aop:
+    proxy-target-class: true
   profiles: default
   banner:
     location: ./banner.txt
@@ -87,6 +89,8 @@ auth:
   header: Authorization
 
 security:
+  aop:
+    proxy-target-class: true
   basic:
     enabled: false
 
