@@ -32,7 +32,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = "transactionManager")
 @EnableTransactionManagement
-public class ServerMonitorRepositoryConfiguration  {
+public class JpaDatasourceConfiguration {
 
     @Autowired
     private Environment environment;
@@ -98,8 +98,7 @@ public class ServerMonitorRepositoryConfiguration  {
      */
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
-        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        return hibernateJpaVendorAdapter;
+        return new HibernateJpaVendorAdapter();
     }
 
     private Properties jpaProperties() {

@@ -32,15 +32,15 @@ public class SwaggerConfig {
  
    @Bean
    public ApiInfo apiInfo() {
-       return new ApiInfoBuilder().contact(contact()).title("Virtual Adrian Springboot Starter")
-                                  .description("Refer <a href='https://docs.example.com'>Documentation</a> for more information on CodeGen")
+       return new ApiInfoBuilder().contact(contact()).title("Virtual Adrian Spring Boot Starter")
+                                  .description("Check out <a href='https://github.com/virtualadrian/virtualadrian-springboot-starter'>GitHub</a> for more information.")
                                   .build();
    }
  
    @Bean
    public Contact contact() {
-       return new Contact("Awesome LLC", "https://contact.example.com",
-                          "support@example.com");
+       return new Contact("Virtual Adrian Spring Boot Starter", "https://github.com/virtualadrian/virtualadrian-springboot-starter",
+                          "adrian@adrian.work");
    }
  
    @Bean

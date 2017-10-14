@@ -11,8 +11,6 @@ import javax.validation.ConstraintViolationException;
 @RestControllerAdvice
 public class GlobalControllerExceptionHandler {
 
-
-
     @ExceptionHandler(value = { ConstraintViolationException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String constraintViolationException(ConstraintViolationException ex) {
@@ -30,5 +28,4 @@ public class GlobalControllerExceptionHandler {
     public String unknownException(Exception ex) {
         return ex.getMessage();
     }
-
 }

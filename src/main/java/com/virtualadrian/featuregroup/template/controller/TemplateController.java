@@ -6,17 +6,13 @@ import com.virtualadrian.featuregroup.template.service.TemplateService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * The type Stats controller.
- */
 @RestController
 @RequestMapping("/template")
 public class TemplateController extends BaseController {
 
     private TemplateService templateService;
 
-    public TemplateController(TemplateService service)
-    {
+    public TemplateController(TemplateService service){
         this.templateService = service;
     }
 
