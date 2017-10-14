@@ -45,9 +45,9 @@ public class AuthController extends BaseController {
     @Value("${auth.header}")
     private String tokenHeader;
 
-    public final static String SIGNUP_URL = "/api/auth/signup";
-    public final static String SIGNIN_URL = "/api/auth/signin";
-    public final static String REFRESH_TOKEN_URL = "/api/auth/token/refresh";
+    public final static String SIGNUP_URL = "/auth/signup";
+    public final static String SIGNIN_URL = "/auth/signin";
+    public final static String REFRESH_TOKEN_URL = "/auth/token/refresh";
 
     private AuthenticationManager authenticationManager;
     private JwtUtil jwtUtil;
@@ -119,7 +119,7 @@ public class AuthController extends BaseController {
         }
 
         Role role  = new Role(1L, "USER");
-        userService.save(new User(0L, name, email, password, role));
+        userService.save(new User( name, email, password, role));
         JwtUser userDetails;
 
         try {

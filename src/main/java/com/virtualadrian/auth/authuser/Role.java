@@ -1,8 +1,8 @@
 package com.virtualadrian.auth.authuser;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Entity(name = "roles")
 @Data
-@NoArgsConstructor
+
 @AllArgsConstructor
 public class Role implements Serializable {
 
@@ -21,6 +21,7 @@ public class Role implements Serializable {
 
     private String label;
 
+    public Role(){}
     public Role(String label) {
         this.label = label;
     }

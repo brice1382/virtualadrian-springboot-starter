@@ -1,18 +1,19 @@
 package com.virtualadrian.auth.authuser;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Email;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+     import com.fasterxml.jackson.annotation.JsonIgnore;
+     import com.fasterxml.jackson.annotation.JsonProperty;
+     import lombok.Data;
+     import lombok.NoArgsConstructor;
+     import org.hibernate.validator.constraints.Email;
+
+     import javax.persistence.*;
+     import javax.validation.constraints.NotNull;
+     import java.io.Serializable;
 
 @Entity(name = "users")
 @Data
-@NoArgsConstructor
 public class User implements Serializable {
 
     @Id
@@ -33,6 +34,9 @@ public class User implements Serializable {
     @OneToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+    public User()
+    {}
 
     public User(String name, String email, String password, Role role) {
         this.setName(name);

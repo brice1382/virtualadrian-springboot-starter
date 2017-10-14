@@ -4,7 +4,7 @@ server:
   contextPath: /api/v1
 ---
 spring:
-  profiles: develop
+  profiles: default
   banner:
     location: ./banner.txt
   devtools:
@@ -14,7 +14,7 @@ spring:
     database: H2
     generate-ddl: true
   datasource:
-    url: "jdbc:h2:mem:default"
+    url: "jdbc:h2:~/test"
     username: sa
     password:
     driverClassName: org.h2.Driver
@@ -27,9 +27,10 @@ spring:
       dialect: org.hibernate.dialect.H2Dialect
     hikari:
       maxPoolSize: 10
+    initialize: true
 ---
 spring:
-  profiles: default
+  profiles: develop
   devtools:
     livereload:
       enabled: true
