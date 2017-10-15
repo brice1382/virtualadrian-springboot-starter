@@ -21,6 +21,12 @@ public class CompanyController extends BaseController {
     Iterable<CompanyModel> allCompany = this.companyService.findall(0, 100);
     return Ok(allCompany);
   }
+  
+  @RequestMapping(value = "/bFind", method = RequestMethod.GET)
+  public ResponseEntity<Iterable<CompanyModel>> findAlll() {
+    Iterable<CompanyModel> allCompany = this.companyService.findall(0, 100);
+    return Ok(allCompany);
+  }
 
   @RequestMapping(value = "/{page}/{pageSize}", method = RequestMethod.GET)
   public ResponseEntity<Iterable<CompanyModel>> findAll(@PathVariable("page") final Integer page, @PathVariable("pageSize") final Integer pageSize) {
